@@ -13,13 +13,13 @@ class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    Long id
 
     @Column
-    String name;
+    String username
 
     @Column
-    String emailId;
+    String emailId
 
     @Column(nullable = false)
     String password

@@ -2,7 +2,7 @@ package com.sannidh.practice.controller;
 
 
 import com.sannidh.practice.domain.api.UserApi;
-import com.sannidh.practice.domain.dto.User;
+import com.sannidh.practice.domain.dto.UserDTO;
 import com.sannidh.practice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/practice/facade/user")
+@RequestMapping("/api/practice/facade/users")
 public class UserController implements UserApi {
 
     @Autowired
@@ -21,17 +21,17 @@ public class UserController implements UserApi {
 
 
     @Override
-    public List<User> getAllUsers(){
+    public List<UserDTO> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @Override
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
+    public UserDTO createUser(@RequestBody UserDTO userDTO){
+        return userService.createUser(userDTO);
     }
 
     @Override
-    public User login(@RequestParam String name, @RequestParam String password){
+    public UserDTO login(@RequestParam String name, @RequestParam String password){
         return userService.login(name,password);
     }
 }

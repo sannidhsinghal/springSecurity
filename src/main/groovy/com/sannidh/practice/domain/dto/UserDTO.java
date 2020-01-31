@@ -1,12 +1,12 @@
 package com.sannidh.practice.domain.dto;
 
-public class User {
+public class UserDTO {
 
     Long id;
 
     String emailId;
 
-    String name;
+    String username;
 
     String password;
 
@@ -21,11 +21,11 @@ public class User {
 
 
     public String getName() {
-        return name;
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String username) {
+        this.username = username;
     }
 
     public String getEmailId() {
