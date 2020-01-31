@@ -1,7 +1,6 @@
 package com.sannidh.practice.domain.api
 
-
-import com.sannidh.practice.domain.dto.UserDTO
+import com.sannidh.practice.domain.dto.User
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.RequestBody
@@ -14,17 +13,17 @@ interface UserApi {
 
     @RequestMapping(value = '/getAllUsers',method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.FOUND)
-    @ApiOperation(value = "getAllUsers" , notes ="Get information of all users",response = UserDTO.class)
-    List<UserDTO> getAllUsers()
+    @ApiOperation(value = "getAllUsers" , notes ="Get information of all users",response = User.class)
+    List<User> getAllUsers()
 
     @RequestMapping(value = '/createUser',method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value = "createUser" ,notes ="Add a user",response = UserDTO.class)
-    UserDTO createUser(@RequestBody UserDTO user)
+    @ApiOperation(value = "createUser" ,notes ="Add a user",response = User.class)
+    User createUser(@RequestBody User user)
 
     @RequestMapping(value = '/login',method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "login",notes="Login for user",response = UserDTO.class)
-    UserDTO login(@RequestParam String name, @RequestParam String password)
+    @ApiOperation(value = "login",notes="Login for user",response = User.class)
+    User login(@RequestParam String name, @RequestParam String password)
 
 }

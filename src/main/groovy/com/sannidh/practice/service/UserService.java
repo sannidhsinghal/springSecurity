@@ -1,17 +1,17 @@
 package com.sannidh.practice.service;
 
 
-import com.sannidh.practice.domain.dto.UserDTO;
+import com.sannidh.practice.domain.dto.User;
 
 import java.util.List;
 
 public interface UserService {
 
 
-    List<UserDTO> getAllUsers();
+    List<User> getAllUsers();
 
-    UserDTO createUser(UserDTO userDTO);
+    User createUser(User userDTO);
 
-    UserDTO login(String name , String password);
+    User login(String name , String password);
 
 }

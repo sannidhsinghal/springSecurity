@@ -1,14 +1,13 @@
 package com.sannidh.practice.service;
 
 
-import com.sannidh.practice.domain.dto.UserDTO;
+import com.sannidh.practice.domain.dto.User;
 import com.sannidh.practice.entity.UserEntity;
 import com.sannidh.practice.exception.UnProccesableException;
 import com.sannidh.practice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,24 +24,24 @@ public class UserServiceImpl implements UserService{
 
 
    @Override
-    public List<UserDTO> getAllUsers(){
-     return userRepository.findAll().stream().map(value ->modelMapper.map(value, UserDTO.class)).collect(Collectors.toList());
+    public List<User> getAllUsers(){
+     return userRepository.findAll().stream().map(value ->modelMapper.map(value, User.class)).collect(Collectors.toList());
    }
 
    @Override
-   public UserDTO createUser(UserDTO userDTO){
-       UserEntity userEntity = modelMapper.map(userDTO,UserEntity.class);
+   public User createUser(User user){
+       UserEntity userEntity = modelMapper.map(user,UserEntity.class);
        userRepository.save(userEntity);
-       return modelMapper.map(userEntity, UserDTO.class);
+       return modelMapper.map(userEntity, User.class);
    }
 
 
    @Override
-   public UserDTO login(String name , String password){
+   public User login(String name , String password){
       UserEntity userEntity = userRepository.findByUsername(name);
       if(userEntity ==null){
           throw new UnProccesableException("Username or password is incorrect");
       }
-      return modelMapper.map(userEntity, UserDTO.class);
+      return modelMapper.map(userEntity, User.class);
    }
 }
