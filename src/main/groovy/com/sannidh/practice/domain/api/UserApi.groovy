@@ -3,7 +3,9 @@ package com.sannidh.practice.domain.api
 import com.sannidh.practice.domain.dto.User
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
+import org.springframework.security.core.token.Token
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 interface UserApi {
 
     @RequestMapping(value = '/getAllUsers',method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.FOUND)
+    @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "getAllUsers" , notes ="Get information of all users",response = User.class)
     List<User> getAllUsers()
 

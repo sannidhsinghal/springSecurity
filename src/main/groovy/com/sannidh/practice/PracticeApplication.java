@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -28,6 +29,7 @@ import java.net.URISyntaxException;
 @EnableJpaRepositories("com.sannidh.practice.repository")
 @EntityScan("com.sannidh.practice.entity")
 @EnableTransactionManagement
+@EnableAuthorizationServer
 @SpringBootApplication
 public class PracticeApplication {
 
