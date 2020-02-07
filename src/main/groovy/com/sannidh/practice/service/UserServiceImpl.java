@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +18,16 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
 
    @Autowired
     private UserRepository userRepository;
 
    @Autowired
    private ModelMapper modelMapper;
+
+   @Autowired
+   private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
    @Override
@@ -34,22 +38,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
    @Override
    public User createUser(User user){
        UserEntity userEntity = modelMapper.map(user,UserEntity.class);
+//       userEntity.setPassword(bCryptPasswordEncoder(user.getPassword()));
        userRepository.save(userEntity);
        return modelMapper.map(userEntity, User.class);
    }
 
 
-   @Override
-   public User login(String name , String password){
-      UserEntity userEntity = userRepository.findByUsername(name);
-      if(userEntity ==null){
-          throw new UnProccesableException("Username or password is incorrect");
-      }
-      return modelMapper.map(userEntity, User.class);
-   }
-
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
+   public User login(String name , String password){
+//      UserEntity userEntity = userRepository.findByUsername(name);
+//      if(userEntity ==null){
+//          throw new UnProccesableException("Username or password is incorrect");
+//      }
+      return null;
+   }
 }

@@ -15,6 +15,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
            http
                    .authorizeRequests()
                    .antMatchers("/api/**").authenticated()
+                   .antMatchers("/api/practice/facade/users/createUser").permitAll()
                    .antMatchers("/").permitAll();
        }
    }
