@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
    @Override
    public User createUser(User user){
        UserEntity userEntity = modelMapper.map(user,UserEntity.class);
-//       userEntity.setPassword(bCryptPasswordEncoder(user.getPassword()));
+      userEntity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
        userRepository.save(userEntity);
        return modelMapper.map(userEntity, User.class);
    }
