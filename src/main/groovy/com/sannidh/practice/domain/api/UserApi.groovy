@@ -2,6 +2,7 @@ package com.sannidh.practice.domain.api
 
 import com.sannidh.practice.domain.dto.User
 import io.swagger.annotations.ApiOperation
+import io.swagger.annotations.AuthorizationScope
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.token.Token
 import org.springframework.web.bind.annotation.RequestBody

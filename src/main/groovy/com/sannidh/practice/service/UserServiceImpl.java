@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -46,10 +47,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
    public User login(String name , String password){
-//      UserEntity userEntity = userRepository.findByUsername(name);
-//      if(userEntity ==null){
-//          throw new UnProccesableException("Username or password is incorrect");
-//      }
-      return null;
+      Optional<UserEntity> optionalEntity = userRepository.findByUsername(name);
+      if(!optionalEntity.isPresent()){
+          throw new UnProccesableException("Username or password is incorrect");
+      }
+      UserEntity userEntity = optionalEntity.get();
+      return modelMapper.map(userEntity,User.class);
    }
 }
