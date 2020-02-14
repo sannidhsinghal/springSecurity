@@ -6,9 +6,6 @@ import com.sannidh.practice.entity.UserEntity;
 import com.sannidh.practice.exception.UnProccesableException;
 import com.sannidh.practice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +19,7 @@ import org.modelmapper.ModelMapper;
 public class UserServiceImpl implements UserService {
 
    @Autowired
-    private UserRepository userRepository;
+   private UserRepository userRepository;
 
    @Autowired
    private ModelMapper modelMapper;
@@ -32,14 +29,14 @@ public class UserServiceImpl implements UserService {
 
 
    @Override
-    public List<User> getAllUsers(){
+   public List<User> getAllUsers(){
      return userRepository.findAll().stream().map(value ->modelMapper.map(value, User.class)).collect(Collectors.toList());
    }
 
    @Override
    public User createUser(User user){
        UserEntity userEntity = modelMapper.map(user,UserEntity.class);
-      userEntity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+       userEntity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
        userRepository.save(userEntity);
        return modelMapper.map(userEntity, User.class);
    }

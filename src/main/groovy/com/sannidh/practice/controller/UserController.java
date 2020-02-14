@@ -5,6 +5,7 @@ import com.sannidh.practice.domain.api.UserApi;
 import com.sannidh.practice.domain.dto.User;
 import com.sannidh.practice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.token.Token;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ public class UserController implements UserApi {
     private UserService userService;
 
 
+    @PreAuthorize("isAuthenticated()")
     @Override
     public List<User> getAllUsers(){
         return userService.getAllUsers();
